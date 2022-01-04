@@ -1,0 +1,20 @@
+class Solution{
+  public:
+    vector<vector<string> > Anagrams(vector<string>& string_list) {
+        unordered_map<string, vector<string>>umap;
+        for(auto itr : string_list){
+            string temp = itr;
+            sort(temp.begin(),temp.end());
+            umap[temp].push_back(itr);
+        }
+        vector<vector<string>> res;
+        for(auto itr : umap){
+            res.push_back(itr.second);
+        }
+        return res;
+    }
+};
+
+
+//question link
+//https://practice.geeksforgeeks.org/problems/overlapping-rectangles1924/1/
