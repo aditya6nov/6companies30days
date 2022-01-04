@@ -1,0 +1,17 @@
+string encode(string src)
+{     
+  int count=1;  
+  string res="";
+  res+=src[0];
+  for(int i=1;i<src.length();i++){
+      if(src[i] != src[i-1]){
+          res+=to_string(count)+src[i];
+          count=1;
+      }else{
+          count++;
+      }
+  }
+  res+=to_string(count);
+  return res;
+}     
+ 
