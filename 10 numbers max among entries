@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+	int numOfVal;
+	cin>>numOfVal;
+	int arr[numOfVal];
+	set<int, greater<int> >res;
+	for(int i=0;i<numOfVal;i++){
+		cin>>arr[i];
+		if(i>=0 && i<10){
+			res.insert(arr[i]);
+		}
+	}
+	for(int i=10;i<numOfVal;i++){
+		if(arr[i] > *res.end()-1){
+			// res.erase(res.end()-1);
+			set<int>::iterator it;
+  
+		    // Get the positionOfElementToBeDeleted
+		    // using method 1
+		    it = prev(res.end());
+		  
+		    // Erase the last element
+		    // currently pointed by the iterator
+		    res.erase(it);
+			res.insert(arr[i]);
+		}
+	}
+	for(auto itr : res){
+		cout<<itr<<" ";
+	}
+	return 0;
+}
