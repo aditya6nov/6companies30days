@@ -1,0 +1,28 @@
+class Solution{
+    private:
+    string decode(string &s,int &i){
+        string res = "";
+        while(i < s.size() && s[i] != ']'){
+            if(isdigit(s[i])){
+                int k=0;
+                while(isdigit(s[i]) && i<s.size()){
+                    k=k*10+s[i++]-'0';
+                }
+                i++;
+                string r=decode(s,i);
+                while(k--){
+                    res+=r;
+                }
+                i++;
+            }else{
+                res+=s[i++];
+            }
+        }
+        return res;
+    }
+    public:
+    string decodedString(string s){
+        int i=0;
+        return decode(s,i);
+    }
+};
